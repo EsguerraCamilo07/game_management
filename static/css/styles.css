@@ -1,12 +1,255 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset some default browser styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* Body and font settings */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header styles */
 header {
-    background: #333;
+    background-color: #34495e;
     color: white;
+    padding: 20px;
     text-align: center;
-    padding: 1em;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #f39c12;
+}
+
+/* Main content */
+main {
+    padding: 20px;
+}
+
+/* Alert messages */
+.alert {
+    margin-top: 15px;
+}
+
+.alert-dismissible .btn-close {
+    background-color: #f39c12;
+}
+
+.alert-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Table styles for listing games */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 2px solid orange;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid orange;
+}
+
+table th {
+    background-color: black;
+    color: white;
+}
+
+button {
+    background-color: #e67e22;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d35400;
+}
+
+/* Form styles for create and modify views */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-size: 1.2em;
+    color: #34495e;
+}
+
+input[type="text"], input[type="number"], input[type="submit"], select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input[type="submit"] {
+    background-color: #34495e;
+    color: white;
+    cursor: pointer;
+    border: none;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #2c3e50;
+}
+
+a.btn {
+    background-color: #e67e22;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a.btn:hover {
+    background-color: #d35400;
+}
+
+/* Breadcrumb styles */
+.breadcrumb {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb a {
+    color: #2c3e50;
+}
+
+.breadcrumb .active {
+    color: #95a5a6;
+}
+
+/* Card styles */
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid orange;
+}
+
+.card-header {
+    background-color: #34495e;
+    color: white;
+    padding: 15px;
+    font-size: 1.5em;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Table for data rows in Create/Modify forms */
+table td button {
+    background-color: #e67e22;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+table td button:hover {
+    background-color: #d35400;
+}
+
+/* Estilo de los botones centrados */
+.text-center {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espaciado entre los botones */
+    margin-top: 20px; /* Añadir un pequeño margen superior para separación */
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Por defecto, el modal está oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Color de fondo para los mensajes */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Colores de los botones */
+.btn-primary {
+    background-color: orange;
+    border-color: orange;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
 }

@@ -1,0 +1,41 @@
+{% extends 'games/base.html' %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="card glass-card">
+            <div class="card-header text-black-500">
+                Crear {{ titulo }}
+            </div>
+            <div class="card-body">
+                <!-- Mensaje de éxito -->
+                {% if messages %}
+                    <div class="container mt-3">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form class="row g-3" action="" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="col-md-6">
+                            <label for="{{ field.name }}" class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+
+                    <!-- Botones centrados y del mismo tamaño -->
+<div class="d-flex justify-content-center gap-3 mt-3">
+    <a href="{% url 'juego_crear' %}" class="btn btn-primary w-25">Crear Juego</a>
+    <a href="{% url 'games_list' %}" class="btn btn-secondary w-25">Volver a la lista</a>
+</div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

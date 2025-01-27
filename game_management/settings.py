@@ -1,5 +1,7 @@
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,7 +17,13 @@ SECRET_KEY = 'django-insecure-%1dzbt)d4q^=d*x6-t+$2@+8wbnqxy0ha4jobn$-z@!^$pb1i5
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'error',
+}
 
 # Application definition
 
@@ -27,6 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'games',
+    'django_bootstrap5',  # pip install django-bootstrap5
+    'crispy_forms',  # pip install django-crispy-forms
+    'crispy_bootstrap5',  # pip install crispy-bootstrap5
+    'django_bootstrap_icons',  # pip install django-bootstrap-icons
+
 ]
 
 MIDDLEWARE = [

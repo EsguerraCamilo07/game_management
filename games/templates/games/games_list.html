@@ -1,15 +1,76 @@
-{% extends "games/base.html" %}
+
+
 {% block content %}
-<h2>Juegos Disponibles</h2>
-<ul>
-    {% for game in games %}
-    <li>{{ game.name }} - {% if game.available %}Disponible{% else %}No Disponible{% endif %}</li>
-    {% endfor %}
-</ul>
-<h3>Añadir Juego</h3>
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="name" placeholder="Nombre del Juego" required>
-    <button type="submit">Añadir</button>
-</form>
-{% endblock %}
+    <h1>{{ titulo }}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Cantidad</th>
+                <th>Código Único</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for juego in juegos %}
+                <tr>
+                    <td>{{ juego.name }}</td>
+                    <td>{{ juego.category }}</td>
+                    <td>{{ juego.quantity }}</td>
+                    <td>{{ juego.code }}</td>
+                    <td>{{ juego.available }}</td>
+                    <td>
+                        <a href="{% url 'juego_modificar' juego.id %}" class="btn btn-primary">Modificar</a>
+                        <button class="btn btn-danger" onclick="showDeleteModal({{ juego.id }})">Eliminar</button>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No hay juegos registrados.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Modal de confirmación -->
+    <div id="deleteModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Confirmar eliminación</h5>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar este juego?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" onclick="closeDeleteModal()">Cancelar</button>
+                <form id="deleteForm" method="POST" action="" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botones centrados -->
+    <div class="text-center mt-3">
+        <a href="{% url 'juego_crear' %}" class="btn btn-primary w-25">Crear Juego</a>
+        <a href="{% url 'index' %}" class="btn btn-secondary w-25">Volver al Menú</a>
+    </div>
+
+{% endblock content %}
+
+<script>
+    // Mostrar el modal de eliminación
+    function showDeleteModal(gameId) {
+        // Establecer la acción del formulario para el juego seleccionado
+        document.getElementById('deleteForm').action = "{% url 'juego_eliminar' 0 %}".replace('0', gameId);
+        document.getElementById('deleteModal').style.display = 'block';  // Mostrar el modal
+    }
+
+    // Cerrar el modal de eliminación
+    function closeDeleteModal() {
+        document.getElementById('deleteModal').style.display = 'none';  // Ocultar el modal
+    }
+</script>
