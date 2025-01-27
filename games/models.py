@@ -27,6 +27,7 @@ class Game(models.Model):
         verbose_name = "Juego"
         verbose_name_plural = "Juegos"
 
+
     
 
 
