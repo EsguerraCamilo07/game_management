@@ -1,0 +1,15 @@
+{% extends "games/base.html" %}
+{% block content %}
+<h2>Juegos Disponibles</h2>
+<ul>
+    {% for game in games %}
+    <li>{{ game.name }} - {% if game.available %}Disponible{% else %}No Disponible{% endif %}</li>
+    {% endfor %}
+</ul>
+<h3>Añadir Juego</h3>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Nombre del Juego" required>
+    <button type="submit">Añadir</button>
+</form>
+{% endblock %}
